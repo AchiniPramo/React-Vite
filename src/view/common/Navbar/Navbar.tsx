@@ -7,7 +7,7 @@ export function Navbar() {
         <nav className="navbar">
             <div className="navbar-logo">
                 <img src={logo} alt="Nexus Logo" style={{ height: '40px', marginRight: '10px' }} />
-                <span className="navbar-logo-text">Nexus</span>
+                <span className="navbar">Nexus</span>
             </div>
             <div className="navbar-right-links">
             <ul className="navbar-links">
