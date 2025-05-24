@@ -1,12 +1,15 @@
 import './Navbar.css';
 import {Link} from "react-router-dom";
+import logo from '../../../assets/logo.webp';
 
 export function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                <img src="/bold-jagged-cyan-nexus-logo-cyber-glow-capture-attention-radiating-powerful-perfect-tech-branding-gaming-logos-367451039.webp" alt="Nexus Logo" style={{ height: '40px', marginRight: '10px' }} />
+                <img src={logo} alt="Nexus Logo" style={{ height: '40px', marginRight: '10px' }} />
+                <span className="navbar-logo-text">Nexus</span>
             </div>
+            <div className="navbar-right-links">
             <ul className="navbar-links">
                 <li>
                     <Link to="/">Home</Link>
@@ -22,6 +25,7 @@ export function Navbar() {
             <button>
                 <Link to="/login">Sign In</Link>
             </button>
+            </div>
         </nav>
     );
 }
