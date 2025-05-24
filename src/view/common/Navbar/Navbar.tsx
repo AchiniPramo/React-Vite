@@ -1,16 +1,27 @@
 import './Navbar.css';
+import {Link} from "react-router-dom";
 
 export function Navbar() {
     return (
         <nav className="navbar">
             <div className="navbar-logo">
-                <span>Nexus</span>
+                <img src="/bold-jagged-cyan-nexus-logo-cyber-glow-capture-attention-radiating-powerful-perfect-tech-branding-gaming-logos-367451039.webp" alt="Nexus Logo" style={{ height: '40px', marginRight: '10px' }} />
             </div>
             <ul className="navbar-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/about">About</Link>
+                </li>
+                <li>
+                    <Link to="/contact">Contact</Link>
+                </li>
             </ul>
+
+            <button>
+                <Link to="/login">Sign In</Link>
+            </button>
         </nav>
     );
 }
