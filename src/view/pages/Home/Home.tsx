@@ -1,21 +1,38 @@
-import grill from "../../../assets/products/grill.jpg";
+import {useEffect, useState} from "react";
+import {Product} from "../../common/Product/Product.tsx";
+
+type ProductData = {
+    id: number,
+    name: string,
+    price: string,
+    currency: string,
+    img: string
+}
+
 export function Home() {
+    const [products, setProducts] = useState<ProductData[]>([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('./product-data.json')
+                const jsonData = await response.json();
+                // console.log(jsonData);
+                setProducts(jsonData);
+                console.log(products);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        }
+        fetchData()
+    }, []);
     return (
-        <div>
-            <div className="flex flex-wrap ml-[1px] mt-[5px] mb-[5px] justify-center items-center mx-auto">
-                <div className="w-28 h-32 mr-2 flex justify-center items-center ">
-                    <div>
-                        <img className="h-[88px] w[88px]" src={grill}/>
-                    </div >
-                    <div className="flex">
-                        <div>
-                            <h3 className="text-[#1f9e4b] text-[12px] pl-2"> Grill </h3>
-                        </div>
-                        <div className="bg-yellow-300 ml-1 p-[0.3px] rounded-lg">
-                        <h3>2000 <small> LKR </small> </h3>
-                        </div>
-                    </div>
-                </div>
+        <div className=" px-20 py-20">
+            <div className="max-w-6xl mx-auto flex flex-wrap gap-6 justify-center">
+                {
+                    products.map((product) => (
+                        <Product key={product.id} data={product}/>
+                    ))
+                }
             </div>
         </div>
     );
