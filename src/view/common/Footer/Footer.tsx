@@ -6,7 +6,7 @@
 //             <div className="footer-container">
 //                 <div className="footer-grid">
 //                     <div className="footer-column">
-//                         <h3 className="footer-logo">Nexus</h3>
+//                         <h3 className="footer-logo">ToolNest</h3>
 //                         <p className="footer-about">
 //                             Building innovative solutions for the modern world. We create digital experiences that matter.
 //                         </p>
@@ -49,7 +49,7 @@
 //                                 <span>+1 (555) 123-4567</span>
 //                             </li>
 //                             <li>
-//                                 <span>info@nexus.example.com</span>
+//                                 <span>info@ToolNest.example.com</span>
 //                             </li>
 //                             <li className="footer-address">
 //                                 123 Business Avenue, Suite 400<br />
@@ -61,7 +61,7 @@
 //
 //                 <div className="footer-bottom">
 //                     <p className="footer-copyright">
-//                         &copy; {new Date().getFullYear()} Nexus. All rights reserved.
+//                         &copy; {new Date().getFullYear()} ToolNest. All rights reserved.
 //                     </p>
 //                     <div className="footer-legal">
 //                         <a href="#">Privacy Policy</a>
@@ -76,13 +76,13 @@
 
 export function Footer() {
     return (
-        <footer className="bg-neutral-700 text-white mt-64 font-sans">
+        <footer className="bg-neutral-700 text-white font-sans">
             <div className="max-w-screen-xl mx-auto px-5">
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 py-10">
                     {/* Column 1 - Logo/About */}
                     <div className="flex flex-col">
                         <h3 className="text-2xl font-bold mb-5 relative inline-block after:content-[''] after:absolute after:bottom-[-8px] after:left-0 after:w-12 after:h-[3px] after:bg-cyan-400">
-                            Nexus
+                            ToolNest
                         </h3>
                         <p className="text-sm text-gray-400 leading-relaxed mb-5">
                             Building innovative solutions for the modern world. We create digital experiences that matter.
@@ -138,7 +138,7 @@ export function Footer() {
                         </h4>
                         <ul className="space-y-4 text-sm text-gray-400">
                             <li>+1 (555) 123-4567</li>
-                            <li>info@nexus.example.com</li>
+                            <li>info@ToolNest.example.com</li>
                             <li>
                                 <address className="not-italic leading-relaxed">
                                     123 Business Avenue, Suite 400<br />
@@ -152,7 +152,7 @@ export function Footer() {
                 {/* Footer Bottom */}
                 <div className="border-t border-white/10 py-6 flex flex-col items-center text-center space-y-3">
                     <p className="text-xs text-gray-400">
-                        &copy; {new Date().getFullYear()} Nexus. All rights reserved.
+                        &copy; {new Date().getFullYear()} ToolNest. All rights reserved.
                     </p>
                     <div className="flex gap-5 text-xs text-gray-400">
                         <a href="#" className="hover:text-cyan-400">Privacy Policy</a>

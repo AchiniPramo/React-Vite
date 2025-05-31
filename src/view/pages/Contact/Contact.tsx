@@ -142,7 +142,7 @@ export function Contact() {
 
                 <button
                     type="submit"
-                    className="py-3 px-6 rounded-md text-white font-semibold bg-gradient-to-r from-blue-300 to-blue-600 hover:from-blue-600 hover:to-blue-800 shadow-md transition-all duration-300 hover:-translate-y-1"
+                    className="py-3 px-6 rounded-md text-white font-semibold bg-gradient-to-r from-green-300 to-green-600 hover:from-green-600 hover:to-green-800 shadow-md transition-all duration-300 hover:-translate-y-1"
                 >
                     Submit
                 </button>

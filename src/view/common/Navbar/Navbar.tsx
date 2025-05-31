@@ -6,8 +6,8 @@
 //     return (
 //         <nav className="navbar">
 //             <div className="navbar-logo">
-//                 <img src={logo} alt="Nexus Logo" style={{ height: '40px', marginRight: '10px' }} />
-//                 <span className="navbar">Nexus</span>
+//                 <img src={logo} alt="ToolNest Logo" style={{ height: '40px', marginRight: '10px' }} />
+//                 <span className="navbar">ToolNest</span>
 //             </div>
 //             <div className="navbar-right-links">
 //             <ul className="navbar-links">
@@ -31,14 +31,14 @@
 // }
 
 import { Link } from "react-router-dom";
-import logo from '../../../assets/logo.webp';
+import logo from '../../../assets/toolnest.png';
 
 export function Navbar() {
     return (
         <nav className="bg-[#444544] text-white flex justify-between px-10 py-5 shadow-md">
             <div className="flex items-center gap-2 text-xl font-bold">
-                <img src={logo} alt="Nexus Logo" className="h-10 w-10 rounded-full" />
-                <span className="hover:text-[#90fdb6] cursor-pointer transition-transform transform hover:-translate-y-1 font-serif text-2xl">Nexus</span>
+                <img src={logo} alt="ToolNest Logo" className="h-10 w-10 rounded-full" />
+                <span className="hover:text-[#90fdb6] cursor-pointer transition-transform transform hover:-translate-y-1 font-serif text-2xl">ToolNest</span>
             </div>
 
             <div className="flex items-center gap-5">
