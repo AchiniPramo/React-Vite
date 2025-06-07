@@ -30,25 +30,25 @@ export function Product({ data }: ProductProps) {
     };
 
     return (
-        <div className="w-32 sm:w-40 bg-white rounded-xl border border-gray-300 shadow-md hover:shadow-lg transition-shadow">
+        <div className="w-32 sm:w-40 bg-white rounded-xl border border-gray-200 shadow-md transform transition duration-300 hover:shadow-xl hover:scale-105 hover:border-green-300  cursor-pointer">
             <img
                 src={image}
-                alt=""
+                alt={data.name}
                 className="w-full h-24 sm:h-28 object-cover rounded-t-xl"
             />
-            <div className="p-2 flex flex-col items-center">
+            <div className="p-2 flex flex-col items-center text-center">
                 <h3 className="text-[13px] font-semibold text-[#1f9e4b] mb-1">{data.name}</h3>
-                <div className="bg-yellow-300 text-gray-800 px-2 py-[1px] rounded-md text-[11px] mb-2">
+
+                <div className="bg-yellow-300 text-gray-800 px-2 py-[1px] rounded-md text-[11px] mb-2 shadow-sm">
                     {data.price} <small className="text-[8px]">{data.currency}</small>
                 </div>
+
                 {isActive ? (
-                    <ModifyCart data={{
-                        product: data
-                    }} />
+                    <ModifyCart data={{ product: data }} />
                 ) : (
                     <button
-                        className="w-full bg-[#1f9e4b] text-white text-[10px] py-[4px] rounded-md hover:bg-[#15803d] transition"
                         onClick={addToCart}
+                        className="w-full bg-[#1f9e4b] text-white text-[10px] py-[4px] rounded-md hover:bg-[#15803d] transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
                     >
                         Add to Cart
                     </button>

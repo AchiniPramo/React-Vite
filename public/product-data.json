@@ -2,29 +2,44 @@
   {
     "id": 1,
     "name": "Drill",
-    "price": "2000",
+    "price": 2000,
     "currency": "LKR",
     "img": "drill.jpg"
   },
   {
     "id": 2,
     "name": "Hammer",
-    "price": "1000",
+    "price": 1000,
     "currency": "LKR",
     "img": "hammer.jpg"
   },
   {
     "id": 3,
     "name": "Grinder",
-    "price": "3000",
+    "price": 3000,
     "currency": "LKR",
     "img": "grinder.jpg"
   },
   {
     "id": 4,
     "name": "Screwdriver",
-    "price": "500",
+    "price": 500,
     "currency": "LKR",
     "img": "screwdriver.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Hand Saw",
+    "price": 1700,
+    "currency": "LKR",
+    "img": "saw.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Air Compressor",
+    "price": 1700,
+    "currency": "LKR",
+    "img": "air-compressor.jpg"
   }
+
 ]

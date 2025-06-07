@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
 import type {CartItem} from "../../../model/CartItem.ts";
 
+
+export const itemsList: CartItem[] = [];
+
 interface ModifyCartProps {
     data: any
 }
 
-export const itemsList:CartItem[] = [];
-export function ModifyCart({ data }: ModifyCartProps) {
+export function ModifyCart({data}: ModifyCartProps) {
     const [itemCount, setItemCount]
         = useState(1);
 
@@ -46,13 +48,15 @@ export function ModifyCart({ data }: ModifyCartProps) {
             <button className="float-left
                  text-[8px] bg-yellow-300
                  rounded-lg h-5 w-5"
-                    onClick={decreaseItemCount}>-</button>
+                    onClick={decreaseItemCount}>-
+            </button>
             <small
                 className="text-[8px]">{itemCount}</small>
             <button className="float-right
                  text-[8px] bg-yellow-300
                  rounded-lg h-5 w-5"
-                    onClick={increaseItemCount}>+</button>
+                    onClick={increaseItemCount}>+
+            </button>
         </div>
     );
 }

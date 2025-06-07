@@ -52,6 +52,9 @@ export function Navbar() {
                     <li>
                         <Link to="/contact" className="text-white hover:text-[#90fdb6] transition-colors">Contact</Link>
                     </li>
+                    <li>
+                        <Link to="/shopping-cart" className="text-white hover:text-[#90fdb6] transition-colors">My-Cart</Link>
+                    </li>
                 </ul>
 
                 <button className="bg-gradient-to-r from-[#90fdb6] to-[#1bf596] text-white font-serif px-6 py-3 rounded-lg shadow-md text-base font-bold transition-transform transform hover:-translate-y-1 hover:from-[#5eff00] hover:to-[#70dc30]">
