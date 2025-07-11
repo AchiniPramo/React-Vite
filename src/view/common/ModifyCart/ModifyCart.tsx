@@ -37,7 +37,7 @@ export function ModifyCart({data}: ModifyCartProps) {
         )*/
         if (item && item.itemCount > 1) {
             // setItemCount(prev => prev - 1)
-            dispatch(decreaseQuantity(data.id))
+            dispatch(decreaseQuantity(data.product.id))
         } else {
             alert("Item count can't be less than 1");
         }

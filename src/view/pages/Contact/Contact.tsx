@@ -72,8 +72,7 @@
 
 
 import { useForm } from "react-hook-form";
-import {backendApi} from "../../../api.ts";
-
+import { backendApi } from "../../../api.ts";
 
 type FormData = {
     email: string;
@@ -106,6 +105,7 @@ export function Contact() {
             <h2 className="text-2xl font-semibold mb-6 text-center">Contact us</h2>
 
             <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+                {/* Email */}
                 <div className="flex flex-col">
                     <label className="mb-1 font-medium">Email:</label>
                     <input
@@ -123,11 +123,12 @@ export function Contact() {
                     />
                     {errors.email && (
                         <span className="text-red-600 text-sm mt-1">
-                            {errors.email.message}
-                        </span>
+              {errors.email.message}
+            </span>
                     )}
                 </div>
 
+                {/* Subject */}
                 <div className="flex flex-col">
                     <label className="mb-1 font-medium">Subject:</label>
                     <input
@@ -145,28 +146,36 @@ export function Contact() {
                     />
                     {errors.subject && (
                         <span className="text-red-600 text-sm mt-1">
-                            {errors.subject.message}
-                        </span>
+              {errors.subject.message}
+            </span>
                     )}
                 </div>
 
+                {/* Message */}
                 <div className="flex flex-col">
                     <label className="mb-1 font-medium">Message:</label>
                     <textarea
                         rows={5}
-                        className={`border rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-[#4eaacf] ${
+                        className={`border rounded-md px-3 py-2 resize-none focus:outline-none ${
                             errors.message ? "border-red-500" : "border-gray-300"
                         }`}
                         {...register("message", { required: true })}
                     />
                     {errors.message && (
-                        <span className="text-red-600 text-sm mt-1">Message is Required</span>
+                        <span className="text-red-600 text-sm mt-1">
+              Message is Required
+            </span>
                     )}
                 </div>
 
+                {/* Submit Button */}
                 <button
                     type="submit"
-                    className="bg-[#4eaacf] text-[#f0ecec] py-3 rounded-lg font-semibold text-lg hover:bg-[#4296b3] transition-colors duration-300"
+                    className="bg-gradient-to-r from-green-500 to-green-700
+                     text-white text-sm font-semibold py-2 rounded-md
+                     shadow-md hover:from-green-600 hover:to-green-800
+                     hover:shadow-lg transition duration-300 ease-in-out
+                     transform hover:-translate-y-0.5 hover:scale-105"
                 >
                     Submit
                 </button>
