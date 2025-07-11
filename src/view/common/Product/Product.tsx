@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { ModifyCart } from "../ModifyCart/ModifyCart.tsx";
+import {ModifyCart} from "../ModifyCart/ModifyCart.tsx";
 import type {ProductData} from "../../../model/ProductData.ts";
-import {useDispatch} from "react-redux";
-import type {AppDispatch} from "../../../store/store.ts";
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../../store/store.ts";
 import {addItemToCart} from "../../../slices/cartSlice.ts";
 
 
@@ -12,23 +11,26 @@ type ProductProps = {
 
 const images: Record<string, string> = import.meta.glob(
     "../../../assets/products/*",
-    { eager: true, import: "default" }
+    {eager: true, import: "default"}
 );
 
-export function Product({ data }: ProductProps) {
+export function Product({data}: ProductProps) {
     const image = images[`../../../assets/products/${data.img}`];
 
     const dispatch = useDispatch<AppDispatch>();
 
-    const [isActive, setIsActive] = useState(false);
+    // const [isActive, setIsActive] = useState(false);
+
+    const item = useSelector((state: RootState) => state.cart.items.find(item => item.product.id === data.id));
+
     const addToCart = () => {
         dispatch(addItemToCart(data))
-        setIsActive(true);
-
+        // setIsActive(true);
     };
 
     return (
-        <div className="w-32 sm:w-40 bg-white rounded-xl border border-gray-200 shadow-md transform transition duration-300 hover:shadow-xl hover:scale-105 hover:border-green-300  cursor-pointer">
+        <div
+            className="w-32 sm:w-40 bg-white rounded-xl border border-gray-200 shadow-md transform transition duration-300 hover:shadow-xl hover:scale-105 hover:border-green-300  cursor-pointer">
             <img
                 src={image}
                 alt={data.name}
@@ -41,8 +43,8 @@ export function Product({ data }: ProductProps) {
                     {data.price} <small className="text-[8px]">{data.currency}</small>
                 </div>
 
-                {isActive ? (
-                    <ModifyCart data={{ product: data }} />
+                {item ? (
+                    <ModifyCart data={{product: data}}/>
                 ) : (
                     <button
                         onClick={addToCart}

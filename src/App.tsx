@@ -1,12 +1,12 @@
-import './App.css'
-import {BrowserRouter, Route, Routes} from "react-router-dom";
-import {Login} from "./view/pages/Login/Login.tsx";
-import {DefaultLayout} from "./view/common/DefaultLayout/DefaultLayout.tsx";
+import './App.css';
 
-// import {DefaultLayout} from "./view/common/DefaultLayout/DefaultLayout.tsx";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {DefaultLayout} from "./view/common/DefaultLayout/DefaultLayout.tsx";
+import {Login} from "./view/pages/Login/Login.tsx";
+
 
 function App() {
-    return (
+    return(
         <BrowserRouter>
             {/*<DefaultLayout/>*/}
             <Routes>
@@ -17,4 +17,4 @@ function App() {
     );
 }
 
-export default App
+export default App;

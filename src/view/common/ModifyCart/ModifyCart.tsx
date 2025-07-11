@@ -1,18 +1,18 @@
-import {useEffect, useState} from "react";
-import type {CartItem} from "../../../model/CartItem.ts";
-
-
-export const itemsList: CartItem[] = [];
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../../store/store.ts";
+import {decreaseQuantity, increaseQuantity} from "../../../slices/cartSlice.ts";
 
 interface ModifyCartProps {
     data: any
 }
 
 export function ModifyCart({data}: ModifyCartProps) {
-    const [itemCount, setItemCount]
-        = useState(1);
+    const dispatch = useDispatch<AppDispatch>();
+    // const [itemCount, setItemCount] = useState(1);
 
-    useEffect(() => {
+    const item = useSelector((state :RootState)  => state.cart.items.find(item => item.product.id === data.product.id));
+
+    /*useEffect(() => {
 
         const existingItem = itemsList
             .find(item =>
@@ -26,20 +26,28 @@ export function ModifyCart({data}: ModifyCartProps) {
             });
         }
         console.log(itemsList);
-    }, [itemCount, data])
+    }, [itemCount, data])*/
     const decreaseItemCount = () => {
-        setItemCount(prevValue =>
+        /*setItemCount(prevValue =>
             prevValue > 1
                 ? prevValue - 1
-                : (alert("Item count can't " +
-                        "be less than 1"),
+                : (alert("Item count can't " + "be less than 1"),
                         prevValue
                 )
-        )
+        )*/
+        if (item && item.itemCount > 1) {
+            // setItemCount(prev => prev - 1)
+            dispatch(decreaseQuantity(data.id))
+        } else {
+            alert("Item count can't be less than 1");
+        }
     }
     const increaseItemCount = () => {
-        setItemCount(prvCount =>
+      /*  setItemCount(prvCount =>
             prvCount + 1)
+    }*/
+        // setItemCount(prev => prev + 1)
+        dispatch(increaseQuantity(data.product.id))
     }
 
     return (
@@ -51,7 +59,7 @@ export function ModifyCart({data}: ModifyCartProps) {
                     onClick={decreaseItemCount}>-
             </button>
             <small
-                className="text-[8px]">{itemCount}</small>
+                className="text-[8px]">{item?.itemCount}</small>
             <button className="float-right
                  text-[8px] bg-yellow-300
                  rounded-lg h-5 w-5"

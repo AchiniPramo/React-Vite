@@ -72,6 +72,8 @@
 
 
 import { useForm } from "react-hook-form";
+import {backendApi} from "../../../api.ts";
+
 
 type FormData = {
     email: string;
@@ -83,66 +85,88 @@ export function Contact() {
     const {
         register,
         handleSubmit,
-        formState: { errors }
+        formState: { errors },
     } = useForm<FormData>();
 
-    const onSubmit = (data: FormData) => {
+    const onSubmit = async (data: FormData) => {
         console.log("Form data submitted:", data);
-        alert(`Submitted your case: ${data.subject}`);
+
+        try {
+            const response = await backendApi.post("/contacts/save", data);
+            console.log("Backend response:", response.data);
+            alert(`Submitted your case:\n${data.subject}`);
+        } catch (error) {
+            console.error("Error submitting contact:", error);
+            alert("Failed to submit your message. Please try again.");
+        }
     };
 
     return (
-        <div className="max-w-lg mx-auto my-10 p-8 bg-white rounded-xl shadow-lg font-serif">
-            <h2 className="text-2xl font-semibold text-center text-gray-800 mb-8">Contact Us</h2>
-            <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
+        <div className="max-w-md mx-auto my-10 p-8 bg-white rounded-xl shadow-md">
+            <h2 className="text-2xl font-semibold mb-6 text-center">Contact us</h2>
 
+            <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
                 <div className="flex flex-col">
-                    <label className="mb-1 font-medium text-gray-700">Email:</label>
+                    <label className="mb-1 font-medium">Email:</label>
                     <input
                         type="email"
-                        className="px-4 py-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        {...register('email', {
-                            required: 'Email is required',
+                        className={`border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#4eaacf] ${
+                            errors.email ? "border-red-500" : "border-gray-300"
+                        }`}
+                        {...register("email", {
+                            required: "Email is required",
                             pattern: {
-                                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                                message: 'Invalid email format'
-                            }
+                                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                                message: "Invalid email address",
+                            },
                         })}
                     />
-                    {errors.email && <span className="text-red-500 text-sm mt-1">{errors.email.message}</span>}
+                    {errors.email && (
+                        <span className="text-red-600 text-sm mt-1">
+                            {errors.email.message}
+                        </span>
+                    )}
                 </div>
 
                 <div className="flex flex-col">
-                    <label className="mb-1 font-medium text-gray-700">Subject:</label>
+                    <label className="mb-1 font-medium">Subject:</label>
                     <input
                         type="text"
-                        className="px-4 py-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        {...register('subject', {
-                            required: 'Subject is required',
+                        className={`border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#4eaacf] ${
+                            errors.subject ? "border-red-500" : "border-gray-300"
+                        }`}
+                        {...register("subject", {
+                            required: "Subject is required",
                             pattern: {
                                 value: /^.{10,30}$/,
-                                message: 'Subject must be between 10 to 30 characters'
-                            }
+                                message: "Subject must be between 10 to 30 characters",
+                            },
                         })}
                     />
-                    {errors.subject && <span className="text-red-500 text-sm mt-1">{errors.subject.message}</span>}
+                    {errors.subject && (
+                        <span className="text-red-600 text-sm mt-1">
+                            {errors.subject.message}
+                        </span>
+                    )}
                 </div>
 
                 <div className="flex flex-col">
-                    <label className="mb-1 font-medium text-gray-700">Message:</label>
+                    <label className="mb-1 font-medium">Message:</label>
                     <textarea
                         rows={5}
-                        className="px-4 py-3 rounded-md border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        {...register('message', {
-                            required: 'Message is required'
-                        })}
+                        className={`border rounded-md px-3 py-2 resize-none focus:outline-none focus:ring-2 focus:ring-[#4eaacf] ${
+                            errors.message ? "border-red-500" : "border-gray-300"
+                        }`}
+                        {...register("message", { required: true })}
                     />
-                    {errors.message && <span className="text-red-500 text-sm mt-1">{errors.message.message}</span>}
+                    {errors.message && (
+                        <span className="text-red-600 text-sm mt-1">Message is Required</span>
+                    )}
                 </div>
 
                 <button
                     type="submit"
-                    className="py-3 px-6 rounded-md text-white font-semibold bg-gradient-to-r from-green-300 to-green-600 hover:from-green-600 hover:to-green-800 shadow-md transition-all duration-300 hover:-translate-y-1"
+                    className="bg-[#4eaacf] text-[#f0ecec] py-3 rounded-lg font-semibold text-lg hover:bg-[#4296b3] transition-colors duration-300"
                 >
                     Submit
                 </button>
